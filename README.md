@@ -186,7 +186,7 @@ sudo python3 sniffer.py
 
 ### Dark Mode — Main Interface
 <p align="center">
-  <img src="screenshots/main_interface.png" alt="Main Interface" width="800"/>
+  <img src="docs/screenshot/dashbord2.jpeg" alt="Main Interface" width="800"/>
 </p>
 
 ### Packet Details & Hex Dump
