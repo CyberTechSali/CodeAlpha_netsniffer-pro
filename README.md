@@ -25,11 +25,8 @@ A real-time network packet sniffer with a modern, dark-themed graphical interfac
 
 ## 📸 Screenshot
 
-*(Add a screenshot of the app here — drag an image into this section on GitHub, e.g. `docs/screenshot.png`)*
+*(docs/screenshot/Dashbord.jpeg)*
 
-```markdown
-![App screenshot](docs/screenshot.png)
-```
 
 ## ⚙️ Requirements
 
