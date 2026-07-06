@@ -112,7 +112,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/NetSniffer-Pro.git
+git clone https://github.com/CyberTechSali/NetSniffer-Pro.git
 cd NetSniffer-Pro
 ```
 
@@ -243,6 +243,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ---
 
 ## 👤 Author
+OUCHAHED SALMA
 
 **CodeAlpha Cybersecurity Internship — Task 1**
 
