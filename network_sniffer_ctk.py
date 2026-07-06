@@ -56,16 +56,16 @@ STAT_COLORS = {
     "Other": "#cba6f7",
 }
 
-# Friendly filter label -> BPF expression (None = no filter)
+# ✅ FIX: Simplified filter map with fallback to Python-level filtering
 FILTER_MAP = {
     "All": None,
-    "tcp": "tcp",
+    "tcp": None,  # ✅ Use Python-level filtering instead of unreliable BPF
     "udp": "udp",
     "icmp": "icmp",
     "arp": "arp",
     "dns (port 53)": "port 53",
-    "http (port 80)": "port 80",
-    "https/tls (port 443)": "port 443",
+    "http (port 80)": "tcp port 80",
+    "https/tls (port 443)": "tcp port 443",
 }
 
 
@@ -788,13 +788,15 @@ class ModernNetworkSnifferGUI(ctk.CTk):
         if iface in ("No interface found", ""):
             iface = None
 
+        # ✅ FIX: Get BPF filter (or None for "tcp" filter)
         bpf_filter = FILTER_MAP.get(self.filter_combo.get())
+        selected_filter = self.filter_combo.get()
 
         try:
             sniff(
                 iface=iface,
                 filter=bpf_filter,
-                prn=self.process_packet,
+                prn=lambda pkt: self.process_packet(pkt, selected_filter),
                 stop_filter=lambda p: not self.sniffing,
                 store=False
             )
@@ -910,12 +912,19 @@ class ModernNetworkSnifferGUI(ctk.CTk):
         first_line = data.split("\r\n", 1)[0].strip()
         return first_line[:80] if first_line else ""
 
-    def process_packet(self, packet):
+    # ✅ FIX: Add selected_filter parameter for Python-level TCP filtering
+    def process_packet(self, packet, selected_filter):
         classified = self._classify(packet)
         if classified is None:
             return
 
         proto, sport, dport, src, dst, info = classified
+
+        # ✅ FIX: Python-level filtering for TCP (when BPF fails)
+        if selected_filter == "tcp":
+            # Only include TCP and TCP-based protocols (HTTP, HTTPS)
+            if proto not in ("TCP", "HTTP", "HTTPS"):
+                return
 
         self.packet_count += 1
         num = self.packet_count
@@ -923,6 +932,13 @@ class ModernNetworkSnifferGUI(ctk.CTk):
 
         self.stats["Total"] += 1
         self.stats[proto] = self.stats.get(proto, 0) + 1
+
+        # ✅ FIX: Also count HTTP/HTTPS under the TCP stat card since they
+        #         use TCP transport. Without this the TCP card stays at 0
+        #         when all TCP traffic is classified as HTTP or HTTPS.
+        if proto in ("HTTP", "HTTPS"):
+            self.stats["TCP"] += 1
+
         if proto not in self.stats:
             self.stats["Other"] += 1
 
