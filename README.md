@@ -28,7 +28,7 @@ A real-time network packet sniffer with a modern, dark-themed graphical interfac
 
 
 ```markdown
-![App screenshot](docs/screenshot/Dashbord.jpeg)
+![App screenshot](docs/screenshot/Dashbord.png).
 ```
 
 
