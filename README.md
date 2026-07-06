@@ -191,17 +191,23 @@ sudo python3 sniffer.py
 
 ### Packet Details & Hex Dump
 <p align="center">
-  <img src="docs/screenshot/Exports2.jpeg" alt="Packet Details" width="800"/>
+  <img src="docs/screenshot/Packet Details1.jpeg" alt="Packet Details" width="800"/>
 </p>
+<p align="center">
+  <img src="docs/screenshot/Hex Dump.jpeg" alt="Packet Details" width="800"/>
+</p>
+
 
 ### Exports & Session Summary
 <p align="center">
-  <img src="screenshots/exports_stats.png" alt="Exports & Stats" width="800"/>
+  <img src="docs/screenshot/Exports.png" alt="Exports & Stats" width="800"/>
 </p>
-
+<p align="center">
+  <img src="docs/screenshot/Exports2.jpeg" alt="Packet Details" width="800"/>
+</p>
 </details>
 
-> 💡 **Add your own screenshots** in the `screenshots/` folder and they will appear here.
+
 
 ---
 
