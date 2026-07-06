@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="screenshots/main_interface.png" alt="NetSniffer Pro Main Interface" width="850"/>
+  <img src="docs/screenshot/Dashbord.png" alt="NetSniffer Pro Main Interface" width="850"/>
 </p>
 
 ---
