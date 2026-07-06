@@ -191,7 +191,7 @@ sudo python3 sniffer.py
 
 ### Packet Details & Hex Dump
 <p align="center">
-  <img src="screenshots/packet_details.png" alt="Packet Details" width="800"/>
+  <img src="docs/screenshot/Exports2.jpeg" alt="Packet Details" width="800"/>
 </p>
 
 ### Exports & Session Summary
